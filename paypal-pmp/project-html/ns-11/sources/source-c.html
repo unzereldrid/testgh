@@ -1,0 +1,168 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PaymentData</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.unzer.payment.paypalpmp.domain.payment</a>
+</div>
+
+<h1>Coverage Summary for Class: PaymentData (com.unzer.payment.paypalpmp.domain.payment)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+</tr>
+<tr>
+  <td class="name">PaymentData</td>
+    <td class="coverageStat"/>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.unzer.payment.paypalpmp.domain.payment
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.unzer.payment.paypalpmp.application.service.payment.Command
+<i class="no-highlight">4</i>&nbsp;import com.unzer.payment.paypalpmp.application.service.processor.TransactionProcessed
+<i class="no-highlight">5</i>&nbsp;import com.unzer.payment.paypalpmp.domain.shared.DataRetentionPolicy
+<i class="no-highlight">6</i>&nbsp;import org.springframework.data.annotation.CreatedDate
+<i class="no-highlight">7</i>&nbsp;import org.springframework.data.annotation.Transient
+<i class="no-highlight">8</i>&nbsp;import org.springframework.data.annotation.TypeAlias
+<i class="no-highlight">9</i>&nbsp;import org.springframework.data.annotation.Version
+<i class="no-highlight">10</i>&nbsp;import org.springframework.data.mongodb.core.index.Indexed
+<i class="no-highlight">11</i>&nbsp;import org.springframework.data.mongodb.core.mapping.Document
+<i class="no-highlight">12</i>&nbsp;import java.time.Instant
+<i class="no-highlight">13</i>&nbsp;import java.util.*
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;@Document
+<i class="no-highlight">16</i>&nbsp;@TypeAlias(&quot;Payment_v1&quot;)
+<i class="no-highlight">17</i>&nbsp;data class Payment(override val id: String,
+<i class="no-highlight">18</i>&nbsp;                   override var status: PaymentStatus,
+<i class="no-highlight">19</i>&nbsp;                   override var channelId: String? = null,
+<i class="no-highlight">20</i>&nbsp;                   override var merchantConfiguration: MerchantConfiguration? = null,
+<i class="no-highlight">21</i>&nbsp;                   override var order: Order? = null,
+<i class="no-highlight">22</i>&nbsp;                   override var customer: Customer? = null,
+<i class="no-highlight">23</i>&nbsp;                   private var transactions: MutableList&lt;Transaction&gt; = mutableListOf(),
+<i class="no-highlight">24</i>&nbsp;                   @Version
+<i class="no-highlight">25</i>&nbsp;                   var version: Int? = null,
+<i class="no-highlight">26</i>&nbsp;                   @CreatedDate @Indexed(expireAfterSeconds = DataRetentionPolicy.DataExpireAfterSeconds)
+<i class="no-highlight">27</i>&nbsp;                   var createdOn: Instant? = null) : PaymentData {
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    @Transient
+<i class="no-highlight">30</i>&nbsp;    private lateinit var activeTransaction: Transaction
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    companion object {
+<i class="no-highlight">33</i>&nbsp;        suspend fun new(init: suspend Payment.() -&gt; Transaction.Descriptor): Transaction.Descriptor {
+<i class="no-highlight">34</i>&nbsp;            val payment = Payment(UUID.randomUUID().toString(), PaymentStatus.CREATED)
+<i class="no-highlight">35</i>&nbsp;            return payment.init()
+<i class="no-highlight">36</i>&nbsp;        }
+<i class="no-highlight">37</i>&nbsp;    }
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    fun withMerchantConfiguration(find: () -&gt; MerchantConfiguration) {
+<i class="no-highlight">40</i>&nbsp;        merchantConfiguration = find()
+<i class="no-highlight">41</i>&nbsp;    }
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    suspend fun purchase(command: Command.Purchase, process: suspend Transaction.(Payment) -&gt; Unit): Payment {
+<i class="no-highlight">44</i>&nbsp;        activeTransaction = Transaction(operation = Operation.PURCHASE,
+<i class="no-highlight">45</i>&nbsp;            amount = command.amount,
+<i class="no-highlight">46</i>&nbsp;            returnUrl = command.returnUrl,
+<i class="no-highlight">47</i>&nbsp;            traceId = command.traceId)
+<i class="no-highlight">48</i>&nbsp;        transactions.add(activeTransaction)
+<i class="no-highlight">49</i>&nbsp;        channelId = command.channelId
+<i class="no-highlight">50</i>&nbsp;        order = command.order
+<i class="no-highlight">51</i>&nbsp;        customer = command.customer
+<i class="no-highlight">52</i>&nbsp;        activeTransaction.process(this)
+<i class="no-highlight">53</i>&nbsp;        return this
+<i class="no-highlight">54</i>&nbsp;    }
+<i class="no-highlight">55</i>&nbsp;
+<i class="no-highlight">56</i>&nbsp;    fun transactionById(command: Command.FindByPaymentAndTransactionId): Transaction.Descriptor? {
+<i class="no-highlight">57</i>&nbsp;        return transactions.byId(command.transactionId)?.let { it.describe() }
+<i class="no-highlight">58</i>&nbsp;    }
+<i class="no-highlight">59</i>&nbsp;
+<i class="no-highlight">60</i>&nbsp;    fun apply(processed: TransactionProcessed.Successful) {
+<i class="no-highlight">61</i>&nbsp;        activeTransaction.mutate(processed)
+<i class="no-highlight">62</i>&nbsp;        order = order?.copy(paypalOrderId = processed.paypalOrderId)
+<i class="no-highlight">63</i>&nbsp;        status = PaymentStatus.PENDING
+<i class="no-highlight">64</i>&nbsp;    }
+<i class="no-highlight">65</i>&nbsp;
+<i class="no-highlight">66</i>&nbsp;    fun apply(failed: TransactionProcessed.Failed) {
+<i class="no-highlight">67</i>&nbsp;        activeTransaction.mutate(failed)
+<i class="no-highlight">68</i>&nbsp;        status = PaymentStatus.FAILED
+<i class="no-highlight">69</i>&nbsp;    }
+<i class="no-highlight">70</i>&nbsp;
+<i class="no-highlight">71</i>&nbsp;    private fun Iterable&lt;Transaction&gt;.byId(transactionId: String): Transaction? {
+<i class="no-highlight">72</i>&nbsp;        return find { it.ids?.uniqueId == transactionId }
+<i class="no-highlight">73</i>&nbsp;    }
+<i class="no-highlight">74</i>&nbsp;
+<i class="no-highlight">75</i>&nbsp;    data class Descriptor(val payment: PaymentData, val transactions: List&lt;TransactionData&gt;) : PaymentData by payment
+<i class="no-highlight">76</i>&nbsp;
+<i class="no-highlight">77</i>&nbsp;    fun describeTransaction() = activeTransaction.describe()
+<i class="no-highlight">78</i>&nbsp;
+<i class="no-highlight">79</i>&nbsp;    fun describe() = Descriptor(state(), transactions.toList())
+<i class="no-highlight">80</i>&nbsp;
+<i class="no-highlight">81</i>&nbsp;    private fun state() = this.copy()
+<i class="no-highlight">82</i>&nbsp;
+<i class="no-highlight">83</i>&nbsp;    private fun Transaction.describe() = Transaction.Descriptor(copy(), state())
+<i class="no-highlight">84</i>&nbsp;
+<i class="no-highlight">85</i>&nbsp;}
+<i class="no-highlight">86</i>&nbsp;
+<i class="no-highlight">87</i>&nbsp;interface PaymentData {
+<i class="no-highlight">88</i>&nbsp;    val id: String
+<i class="no-highlight">89</i>&nbsp;    val channelId: String?
+<i class="no-highlight">90</i>&nbsp;    var merchantConfiguration: MerchantConfiguration?
+<i class="no-highlight">91</i>&nbsp;    var order: Order?
+<i class="no-highlight">92</i>&nbsp;    var customer: Customer?
+<i class="no-highlight">93</i>&nbsp;    var status: PaymentStatus
+<i class="no-highlight">94</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-09 08:57</div>
+</div>
+</body>
+</html>

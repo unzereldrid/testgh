@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > KotlinLoggingExtensionsKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.unzer.payment.paypalpmp.infrastructure.extensions</a>
+</div>
+
+<h1>Coverage Summary for Class: KotlinLoggingExtensionsKt (com.unzer.payment.paypalpmp.infrastructure.extensions)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">KotlinLoggingExtensionsKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (6/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (8/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88%
+  </span>
+  <span class="absValue">
+    (22/25)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70.4%
+  </span>
+  <span class="absValue">
+    (133/189)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.unzer.payment.paypalpmp.infrastructure.extensions
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.fasterxml.jackson.annotation.JsonInclude
+<i class="no-highlight">4</i>&nbsp;import com.fasterxml.jackson.databind.ObjectMapper
+<i class="no-highlight">5</i>&nbsp;import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+<i class="no-highlight">6</i>&nbsp;import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+<i class="no-highlight">7</i>&nbsp;import com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.model.TransactionProcessingError
+<i class="no-highlight">8</i>&nbsp;import com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.model.TransactionResponse
+<i class="no-highlight">9</i>&nbsp;import com.unzer.payment.paypalpmp.application.service.payment.context.MDC
+<i class="no-highlight">10</i>&nbsp;import org.slf4j.Logger
+<i class="no-highlight">11</i>&nbsp;import org.springframework.http.HttpMethod
+<i class="no-highlight">12</i>&nbsp;import org.springframework.http.HttpStatus
+<i class="no-highlight">13</i>&nbsp;import org.springframework.http.ResponseEntity
+<i class="no-highlight">14</i>&nbsp;
+<b class="nc"><i class="no-highlight">15</i>&nbsp;fun Logger.logApiRequest(logMessage: String, path: String, method: HttpMethod, requestBody: Any? = null) {</b>
+<b class="fc"><i class="no-highlight">16</i>&nbsp;    val mapper = objectMapper()</b>
+<b class="pc"><i class="no-highlight">17</i>&nbsp;    val requestMessage = requestBody?.let { mapper.writeValueAsString(it) } ?: &quot;empty&quot;</b>
+<b class="fc"><i class="no-highlight">18</i>&nbsp;    info (&quot;[rest-api] $logMessage | $method $path | request: $requestMessage&quot;)</b>
+<i class="no-highlight">19</i>&nbsp;}
+<i class="no-highlight">20</i>&nbsp;
+<b class="nc"><i class="no-highlight">21</i>&nbsp;fun Logger.logApiResponse(logMessage: String, response: ResponseEntity&lt;TransactionResponse&gt;, path: String, method: HttpMethod, requestBody: Any? = null) {</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    val mapper = objectMapper()</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;    val responseBody = response.body</b>
+<b class="pc"><i class="no-highlight">24</i>&nbsp;    MDC.paymentId(responseBody.paymentId).uniqueId(responseBody?.uniqueId).shortId(responseBody?.shortId).status(responseBody.processing?.status)</b>
+<b class="pc"><i class="no-highlight">25</i>&nbsp;    val requestMessage = requestBody?.let { mapper.writeValueAsString(it) } ?: &quot;empty&quot;</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;    val responseMessage = mapper.writeValueAsString(responseBody)</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;    info ( &quot;[rest-api] $logMessage | $method $path | statusCode: ${response.statusCode} | request: $requestMessage | response: $responseMessage&quot; )</b>
+<i class="no-highlight">28</i>&nbsp;}
+<i class="no-highlight">29</i>&nbsp;
+<b class="fc"><i class="no-highlight">30</i>&nbsp;fun Logger.logApiFailure(logMessage: String?, errorResponse: TransactionProcessingError, httpStatus: HttpStatus, throwable: Throwable ?= null) {</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;    val mapper = objectMapper()</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;    MDC.status(errorResponse.processing.status)</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;    val responseMessage = mapper.writeValueAsString(errorResponse)</b>
+<b class="pc"><i class="no-highlight">34</i>&nbsp;    if (throwable != null) {</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        error(&quot;[rest-api] $logMessage | exception: ${throwable::class.simpleName} | statusCode: $httpStatus | response: $responseMessage&quot;, throwable)</b>
+<i class="no-highlight">36</i>&nbsp;    } else {
+<b class="fc"><i class="no-highlight">37</i>&nbsp;        info (&quot;[rest-api] $logMessage | statusCode: $httpStatus | response: $responseMessage&quot;)</b>
+<i class="no-highlight">38</i>&nbsp;    }
+<i class="no-highlight">39</i>&nbsp;
+<i class="no-highlight">40</i>&nbsp;}
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;fun Logger.logApiGetResponse(logMessage: String, responseBody: Any, path: String) {
+<b class="fc"><i class="no-highlight">43</i>&nbsp;    val mapper = objectMapper()</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;    val responseMessage = mapper.writeValueAsString(responseBody)</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;    info(&quot;[rest-api] $logMessage ${HttpMethod.GET} $path | statusCode: 200 | response: $responseMessage&quot;)</b>
+<i class="no-highlight">46</i>&nbsp;}
+<i class="no-highlight">47</i>&nbsp;
+<b class="fc"><i class="no-highlight">48</i>&nbsp;private fun objectMapper() = ObjectMapper()</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;    .registerModule(JavaTimeModule())</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;    .setSerializationInclusion(JsonInclude.Include.NON_NULL)</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;    .registerKotlinModule()</b>
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-09 08:57</div>
+</div>
+</body>
+</html>

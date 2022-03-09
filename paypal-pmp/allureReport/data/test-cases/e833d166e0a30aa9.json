@@ -1,0 +1,123 @@
+{
+  "uid" : "e833d166e0a30aa9",
+  "name" : "Creation of order fails on paypal side(String, long) Paypal returns error 401 more than once",
+  "fullName" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest.Creation of order fails on paypal side",
+  "historyId" : "848d7b5a91f22d0b8c1823a6c206f289",
+  "time" : {
+    "start" : 1646816467158,
+    "stop" : 1646816468408,
+    "duration" : 1250
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "2e489221f0f6f6c8",
+      "name" : "Request",
+      "source" : "2e489221f0f6f6c8.html",
+      "type" : "text/html",
+      "size" : 1595
+    }, {
+      "uid" : "dba78d42c087905c",
+      "name" : "HTTP/1.1 500 Internal Server Error",
+      "source" : "dba78d42c087905c.html",
+      "type" : "text/html",
+      "size" : 1630
+    }, {
+      "uid" : "4646d2a674efc459",
+      "name" : "Request",
+      "source" : "4646d2a674efc459.html",
+      "type" : "text/html",
+      "size" : 567
+    }, {
+      "uid" : "8cdbf70ef8dd066b",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "8cdbf70ef8dd066b.html",
+      "type" : "text/html",
+      "size" : 1474
+    }, {
+      "uid" : "11f5b585f85cf67b",
+      "name" : "Request",
+      "source" : "11f5b585f85cf67b.html",
+      "type" : "text/html",
+      "size" : 667
+    }, {
+      "uid" : "d1a2f3ae76880e82",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "d1a2f3ae76880e82.html",
+      "type" : "text/html",
+      "size" : 1630
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 6,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "PPPMP-3"
+  }, {
+    "name" : "tag",
+    "value" : "PPPMP-20"
+  }, {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.unzer.payment.paypalpmp.testing.tests.PurchaseTest]/[test-template:Creation of order fails on paypal side(java.lang.String, long)]/[test-template-invocation:#4]"
+  }, {
+    "name" : "host",
+    "value" : "fv-az224-626"
+  }, {
+    "name" : "thread",
+    "value" : "5524@fv-az224-626.Test worker(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "Creation of order fails on paypal side"
+  }, {
+    "name" : "suite",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "Paypal returns error 401 more than once"
+  }, {
+    "name" : "arg1",
+    "value" : "13401"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "PPPMP-3", "PPPMP-20" ]
+  },
+  "source" : "e833d166e0a30aa9.json",
+  "parameterValues" : [ "Paypal returns error 401 more than once", "13401" ]
+}

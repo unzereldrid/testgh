@@ -1,0 +1,159 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > HeadersKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.analysis</a>
+</div>
+
+<h1>Coverage Summary for Class: HeadersKt (com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.analysis)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">HeadersKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.analysis
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import java.util.*
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;data class Headers(val traceId: String,
+<i class="no-highlight">6</i>&nbsp;                   val analysis: Map&lt;String, String&gt;) {
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;    companion object {
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;        const val PREFIX = &quot;analysis.&quot;
+<i class="no-highlight">11</i>&nbsp;        const val TRACE_ID: String = &quot;X-Trace-Id&quot;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;        fun from(headers: Map&lt;String, String&gt;): Headers {
+<i class="no-highlight">14</i>&nbsp;            val values = headers
+<i class="no-highlight">15</i>&nbsp;                .filterKeys { it.startsWith(PREFIX, ignoreCase = true) }
+<i class="no-highlight">16</i>&nbsp;                .mapKeys { it.key.removePrefix(PREFIX, ignoreCase = true) }
+<i class="no-highlight">17</i>&nbsp;            val traceId = headers[TRACE_ID] ?: UUID.randomUUID().toString()
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;            return Headers(traceId, values)
+<i class="no-highlight">20</i>&nbsp;        }
+<i class="no-highlight">21</i>&nbsp;    }
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;}
+<i class="no-highlight">24</i>&nbsp;
+<b class="nc"><i class="no-highlight">25</i>&nbsp;private fun String.removePrefix(prefix: CharSequence, ignoreCase: Boolean = false): String {</b>
+<b class="nc"><i class="no-highlight">26</i>&nbsp;    if (startsWith(prefix, ignoreCase)) {</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        return substring(prefix.length)</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<b class="nc"><i class="no-highlight">29</i>&nbsp;    return this</b>
+<i class="no-highlight">30</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-09 08:57</div>
+</div>
+</body>
+</html>

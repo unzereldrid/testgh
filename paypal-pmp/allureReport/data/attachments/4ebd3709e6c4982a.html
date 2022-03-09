@@ -1,0 +1,140 @@
+<div>POST to http://localhost:9000/payment-methods/paypal/payments/purchase</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    {
+    &quot;amount&quot;: {
+        &quot;value&quot;: 1700,
+        &quot;currency&quot;: &quot;EUR&quot;
+    },
+    &quot;merchantConfiguration&quot;: {
+        &quot;product&quot;: {
+            &quot;merchantId&quot;: &quot;LEMYFFUCXDB5N&quot;,
+            &quot;brandName&quot;: &quot;some brand&quot;,
+            &quot;id&quot;: &quot;productId&quot;
+        },
+        &quot;merchantName&quot;: &quot;some merchant&quot;
+    },
+    &quot;channelId&quot;: &quot;sample-channel-id&quot;,
+    &quot;returnUrl&quot;: &quot;http://merchantshop.de&quot;,
+    &quot;order&quot;: {
+        &quot;id&quot;: &quot;testOrderId&quot;,
+        &quot;description&quot;: &quot;testDescription&quot;,
+        &quot;merchantInvoiceId&quot;: &quot;invoiceId_1&quot;,
+        &quot;items&quot;: [
+            {
+                &quot;amount&quot;: 1500,
+                &quot;articleId&quot;: &quot;testArticleid1&quot;,
+                &quot;description&quot;: &quot;testdesc1&quot;,
+                &quot;name&quot;: &quot;testName1&quot;,
+                &quot;quantity&quot;: 1
+            },
+            {
+                &quot;amount&quot;: 100,
+                &quot;articleId&quot;: &quot;testArticleid2&quot;,
+                &quot;description&quot;: &quot;testdesc2&quot;,
+                &quot;name&quot;: &quot;testName2&quot;,
+                &quot;quantity&quot;: 2
+            }
+        ]
+    },
+    &quot;customer&quot;: {
+        &quot;email&quot;: &quot;test@unzer.com&quot;,
+        &quot;billingAddress&quot;: {
+            &quot;country&quot;: &quot;DE&quot;,
+            &quot;city&quot;: &quot;Testcity&quot;,
+            &quot;companyName&quot;: &quot;TestCompany&quot;,
+            &quot;firstName&quot;: &quot;Testabc&quot;,
+            &quot;lastName&quot;: &quot;testXyz&quot;,
+            &quot;state&quot;: &quot;TestState&quot;,
+            &quot;street&quot;: &quot;TestStreet&quot;,
+            &quot;zip&quot;: &quot;TestZip&quot;
+        },
+        &quot;shippingAddress&quot;: {
+            &quot;country&quot;: &quot;DE&quot;,
+            &quot;city&quot;: &quot;Testcity&quot;,
+            &quot;companyName&quot;: &quot;TestCompany&quot;,
+            &quot;firstName&quot;: &quot;Testabc&quot;,
+            &quot;lastName&quot;: &quot;testXyz&quot;,
+            &quot;state&quot;: &quot;TestState&quot;,
+            &quot;street&quot;: &quot;TestStreet&quot;,
+            &quot;zip&quot;: &quot;TestZip&quot;
+        }
+    }
+}
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>X-Trace-Id: d0b72104-de0c-4216-9705-d64165475eb1</div>
+        <div>Content-Type: application/json</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://localhost:9000/payment-methods/paypal/payments/purchase&#39; -H &#39;Accept: */*&#39; -H &#39;X-Trace-Id: d0b72104-de0c-4216-9705-d64165475eb1&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;amount&quot;: {
+        &quot;value&quot;: 1700,
+        &quot;currency&quot;: &quot;EUR&quot;
+    },
+    &quot;merchantConfiguration&quot;: {
+        &quot;product&quot;: {
+            &quot;merchantId&quot;: &quot;LEMYFFUCXDB5N&quot;,
+            &quot;brandName&quot;: &quot;some brand&quot;,
+            &quot;id&quot;: &quot;productId&quot;
+        },
+        &quot;merchantName&quot;: &quot;some merchant&quot;
+    },
+    &quot;channelId&quot;: &quot;sample-channel-id&quot;,
+    &quot;returnUrl&quot;: &quot;http://merchantshop.de&quot;,
+    &quot;order&quot;: {
+        &quot;id&quot;: &quot;testOrderId&quot;,
+        &quot;description&quot;: &quot;testDescription&quot;,
+        &quot;merchantInvoiceId&quot;: &quot;invoiceId_1&quot;,
+        &quot;items&quot;: [
+            {
+                &quot;amount&quot;: 1500,
+                &quot;articleId&quot;: &quot;testArticleid1&quot;,
+                &quot;description&quot;: &quot;testdesc1&quot;,
+                &quot;name&quot;: &quot;testName1&quot;,
+                &quot;quantity&quot;: 1
+            },
+            {
+                &quot;amount&quot;: 100,
+                &quot;articleId&quot;: &quot;testArticleid2&quot;,
+                &quot;description&quot;: &quot;testdesc2&quot;,
+                &quot;name&quot;: &quot;testName2&quot;,
+                &quot;quantity&quot;: 2
+            }
+        ]
+    },
+    &quot;customer&quot;: {
+        &quot;email&quot;: &quot;test@unzer.com&quot;,
+        &quot;billingAddress&quot;: {
+            &quot;country&quot;: &quot;DE&quot;,
+            &quot;city&quot;: &quot;Testcity&quot;,
+            &quot;companyName&quot;: &quot;TestCompany&quot;,
+            &quot;firstName&quot;: &quot;Testabc&quot;,
+            &quot;lastName&quot;: &quot;testXyz&quot;,
+            &quot;state&quot;: &quot;TestState&quot;,
+            &quot;street&quot;: &quot;TestStreet&quot;,
+            &quot;zip&quot;: &quot;TestZip&quot;
+        },
+        &quot;shippingAddress&quot;: {
+            &quot;country&quot;: &quot;DE&quot;,
+            &quot;city&quot;: &quot;Testcity&quot;,
+            &quot;companyName&quot;: &quot;TestCompany&quot;,
+            &quot;firstName&quot;: &quot;Testabc&quot;,
+            &quot;lastName&quot;: &quot;testXyz&quot;,
+            &quot;state&quot;: &quot;TestState&quot;,
+            &quot;street&quot;: &quot;TestStreet&quot;,
+            &quot;zip&quot;: &quot;TestZip&quot;
+        }
+    }
+}&#39;
+</div>

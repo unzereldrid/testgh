@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ValidationsKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.validation</a>
+</div>
+
+<h1>Coverage Summary for Class: ValidationsKt (com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.validation)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">ValidationsKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81.8%
+  </span>
+  <span class="absValue">
+    (18/22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.4%
+  </span>
+  <span class="absValue">
+    (103/114)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.validation
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.model.Amount
+<i class="no-highlight">4</i>&nbsp;import com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.model.Order
+<i class="no-highlight">5</i>&nbsp;import com.unzer.payment.paypalpmp.application.adapters.incoming.rest.payment.model.TransactionRequest
+<i class="no-highlight">6</i>&nbsp;import com.unzer.payment.paypalpmp.domain.shared.ResponseCodes
+<i class="no-highlight">7</i>&nbsp;import org.apache.commons.validator.routines.UrlValidator
+<i class="no-highlight">8</i>&nbsp;import java.util.*
+<i class="no-highlight">9</i>&nbsp;
+<b class="fc"><i class="no-highlight">10</i>&nbsp;fun TransactionRequest.validate(): TransactionRequest = TransactionRequestValidator.validateRequest(this)</b>
+<i class="no-highlight">11</i>&nbsp;
+<b class="fc"><i class="no-highlight">12</i>&nbsp;val urlValidator = UrlValidator(UrlValidator.ALLOW_LOCAL_URLS)</b>
+<i class="no-highlight">13</i>&nbsp;const val AMOUNT_MAX_SIZE = 12
+<i class="no-highlight">14</i>&nbsp;
+<b class="fc"><i class="no-highlight">15</i>&nbsp;fun Amount.validate(allowZero: Boolean = false) {</b>
+<b class="pc"><i class="no-highlight">16</i>&nbsp;    val tooSmall = if (allowZero) value &lt;= 0 else value &lt; 0</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;    if (tooSmall || value.toString().length &gt; AMOUNT_MAX_SIZE) ResponseCodes.INVALID_AMOUNT.reject()</b>
+<i class="no-highlight">18</i>&nbsp;
+<b class="fc"><i class="no-highlight">19</i>&nbsp;    if (currency.isEmpty()) ResponseCodes.CURRENCY_MISSING.reject()</b>
+<i class="no-highlight">20</i>&nbsp;
+<b class="fc"><i class="no-highlight">21</i>&nbsp;    runCatching { Currency.getInstance(currency) }.onFailure { ResponseCodes.INVALID_CURRENCY.reject() }</b>
+<i class="no-highlight">22</i>&nbsp;}
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;fun String.validateUrl() {
+<b class="fc"><i class="no-highlight">26</i>&nbsp;    if (!urlValidator.isValid(this)) ResponseCodes.MISSING_OR_INVALID_INPUT_DATA.reject()</b>
+<i class="no-highlight">27</i>&nbsp;}
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;fun Order.validate() {
+<b class="pc"><i class="no-highlight">30</i>&nbsp;    id?.let {</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        if (it.isBlank()) ResponseCodes.MISSING_OR_INVALID_INPUT_DATA.reject()</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;    }</b>
+<i class="no-highlight">33</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-09 08:57</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{
+    "intent": "CAPTURE",
+    "purchase_units": [
+        {
+            "reference_id": null,
+            "amount": {
+                "currency_code": "EUR",
+                "value": "17.00",
+                "breakdown": {
+                    "item_total": {
+                        "currency_code": "EUR",
+                        "value": "17.00"
+                    },
+                    "handling": {
+                        "currency_code": "EUR",
+                        "value": "0.00"
+                    },
+                    "discount": {
+                        "currency_code": "EUR",
+                        "value": "0.00"
+                    }
+                }
+            },
+            "payee": {
+                "merchant_id": "LEMYFFUCXDB5N"
+            },
+            "description": "83377fb5.3a8b.401e.b5b6.c81ed1742db2 some merchant testOrderId",
+            "soft_descriptor": "83377fb5.3a8b.401e.b5b",
+            "custom_id": "49f174c0-0282-4cb8-97b1-62676099504b",
+            "invoice_id": "invoiceId_1",
+            "items": [
+                {
+                    "name": "testName1",
+                    "quantity": 1,
+                    "description": "testdesc1",
+                    "unit_amount": {
+                        "currency_code": "EUR",
+                        "value": "15.00"
+                    }
+                },
+                {
+                    "name": "testName2",
+                    "quantity": 2,
+                    "description": "testdesc2",
+                    "unit_amount": {
+                        "currency_code": "EUR",
+                        "value": "1.00"
+                    }
+                }
+            ],
+            "shipping": {
+                "name": {
+                    "full_name": "Testabc testXyz"
+                },
+                "address": {
+                    "country_code": "DE",
+                    "postal_code": "TestZip",
+                    "address_line_1": "TestStreet",
+                    "admin_area_1": "TestState",
+                    "admin_area_2": "Testcity"
+                }
+            }
+        }
+    ],
+    "payer": {
+        "name": {
+            "given_name": "Testabc",
+            "surname": "testXyz"
+        },
+        "email_address": "test@unzer.com",
+        "address": {
+            "country_code": "DE",
+            "postal_code": "TestZip",
+            "address_line_1": "TestStreet",
+            "admin_area_1": "TestState",
+            "admin_area_2": "Testcity"
+        }
+    },
+    "application_context": {
+        "brand_name": "some brand",
+        "locale": "de-DE",
+        "landing_page": "BILLING",
+        "shipping_preference": "SET_PROVIDED_ADDRESS",
+        "payment_method": {
+            "payer_selected": "PAYPAL",
+            "payee_preferred": "IMMEDIATE_PAYMENT_REQUIRED"
+        },
+        "return_url": "http://localhost:9000/return/32d1de2c-081c-4977-94c4-352cbb24d183?X-Trace-Id=d0b72104-de0c-4216-9705-d64165475eb1&result=SUCCESS",
+        "cancel_url": "http://localhost:9000/return/32d1de2c-081c-4977-94c4-352cbb24d183?X-Trace-Id=d0b72104-de0c-4216-9705-d64165475eb1&result=CANCEL",
+        "user_action": "PAY_NOW"
+    }
+}

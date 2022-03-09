@@ -1,0 +1,259 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "children" : [ {
+    "name" : "com.unzer.payment.paypalpmp.testing.tests",
+    "children" : [ {
+      "name" : "GetPaymentTest",
+      "children" : [ {
+        "name" : "Get payment returns 404 when payment id does not exist",
+        "uid" : "2cdcb035c3eb69a9",
+        "parentUid" : "16af2e6c948a0126ab365ee5bcb57f67",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816455438,
+          "stop" : 1646816459694,
+          "duration" : 4256
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "16af2e6c948a0126ab365ee5bcb57f67"
+    }, {
+      "name" : "GetTransactionTest",
+      "children" : [ {
+        "name" : "Get transaction returns 404 when unique id of transaction does not exist",
+        "uid" : "76aae76d78e07183",
+        "parentUid" : "9a7ba83b1bc015ac387bc3b1745fe4bc",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816463539,
+          "stop" : 1646816463694,
+          "duration" : 155
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Get transaction returns 404 when payment id and unique id don't exist",
+        "uid" : "ef4953a621b7a7c",
+        "parentUid" : "9a7ba83b1bc015ac387bc3b1745fe4bc",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816463706,
+          "stop" : 1646816463788,
+          "duration" : 82
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Get transaction returns 404 when payment id does not exist",
+        "uid" : "c8f46e83195be364",
+        "parentUid" : "9a7ba83b1bc015ac387bc3b1745fe4bc",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816463791,
+          "stop" : 1646816463834,
+          "duration" : 43
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "9a7ba83b1bc015ac387bc3b1745fe4bc"
+    }, {
+      "name" : "PurchaseTest",
+      "children" : [ {
+        "name" : "Creation of order fails on paypal side",
+        "uid" : "81d550aebc4e3c7d",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816463869,
+          "stop" : 1646816465981,
+          "duration" : 2112
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "Paypal replies with internal server error", "13500" ]
+      }, {
+        "name" : "Creation of order fails on paypal side",
+        "uid" : "9e20ce5322ba48a4",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816466007,
+          "stop" : 1646816466716,
+          "duration" : 709
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "Paypal replies with validation error", "13400" ]
+      }, {
+        "name" : "Creation of order fails on paypal side",
+        "uid" : "f351e56f77c569ef",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816466719,
+          "stop" : 1646816467152,
+          "duration" : 433
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "Paypal response does not have order id", "13300" ]
+      }, {
+        "name" : "Creation of order fails on paypal side",
+        "uid" : "e833d166e0a30aa9",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816467158,
+          "stop" : 1646816468408,
+          "duration" : 1250
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "Paypal returns error 401 more than once", "13401" ]
+      }, {
+        "name" : "Creation of order fails on paypal side",
+        "uid" : "71e3b9be41ebb85e",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816468411,
+          "stop" : 1646816473811,
+          "duration" : 5400
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "Request to paypal times out", "13408" ]
+      }, {
+        "name" : "Paypal auth token is recreated on 401 error",
+        "uid" : "c1491b9d8e14a9bf",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816473828,
+          "stop" : 1646816475282,
+          "duration" : 1454
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Pending paypal purchase with mandatory fields",
+        "uid" : "893c8444112336e",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816475291,
+          "stop" : 1646816476365,
+          "duration" : 1074
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Pending paypal purchase with optional fields",
+        "uid" : "931f5b9e88d600df",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816476371,
+          "stop" : 1646816477725,
+          "duration" : 1354
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Purchase is rejected with validation error",
+        "uid" : "4c30cea8dc6c0691",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816477729,
+          "stop" : 1646816477823,
+          "duration" : 94
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Purchase rejected with missing mandatory fields error",
+        "uid" : "70f3ce0e06ea73c0",
+        "parentUid" : "ba8b38b7648e9dd3584c3c1eca43581f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1646816477828,
+          "stop" : 1646816477866,
+          "duration" : 38
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "ba8b38b7648e9dd3584c3c1eca43581f"
+    } ],
+    "uid" : "com.unzer.payment.paypalpmp.testing.tests"
+  } ],
+  "name" : "packages"
+}

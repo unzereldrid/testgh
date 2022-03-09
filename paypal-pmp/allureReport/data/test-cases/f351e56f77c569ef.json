@@ -1,0 +1,123 @@
+{
+  "uid" : "f351e56f77c569ef",
+  "name" : "Creation of order fails on paypal side(String, long) Paypal response does not have order id",
+  "fullName" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest.Creation of order fails on paypal side",
+  "historyId" : "d52017adbc614a5c2262a7c90d2370b0",
+  "time" : {
+    "start" : 1646816466719,
+    "stop" : 1646816467152,
+    "duration" : 433
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "b7017e893109a1fe",
+      "name" : "Request",
+      "source" : "b7017e893109a1fe.html",
+      "type" : "text/html",
+      "size" : 1595
+    }, {
+      "uid" : "eb6f221c2fc734a0",
+      "name" : "HTTP/1.1 500 Internal Server Error",
+      "source" : "eb6f221c2fc734a0.html",
+      "type" : "text/html",
+      "size" : 1630
+    }, {
+      "uid" : "ea7feebcecceb328",
+      "name" : "Request",
+      "source" : "ea7feebcecceb328.html",
+      "type" : "text/html",
+      "size" : 567
+    }, {
+      "uid" : "e41245a104a2a23a",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "e41245a104a2a23a.html",
+      "type" : "text/html",
+      "size" : 1474
+    }, {
+      "uid" : "3bcd6aaee6075433",
+      "name" : "Request",
+      "source" : "3bcd6aaee6075433.html",
+      "type" : "text/html",
+      "size" : 667
+    }, {
+      "uid" : "c5a3a17b88e8ce70",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "c5a3a17b88e8ce70.html",
+      "type" : "text/html",
+      "size" : 1630
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 6,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "PPPMP-3"
+  }, {
+    "name" : "tag",
+    "value" : "PPPMP-20"
+  }, {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.unzer.payment.paypalpmp.testing.tests.PurchaseTest]/[test-template:Creation of order fails on paypal side(java.lang.String, long)]/[test-template-invocation:#3]"
+  }, {
+    "name" : "host",
+    "value" : "fv-az224-626"
+  }, {
+    "name" : "thread",
+    "value" : "5524@fv-az224-626.Test worker(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "Creation of order fails on paypal side"
+  }, {
+    "name" : "suite",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "Paypal response does not have order id"
+  }, {
+    "name" : "arg1",
+    "value" : "13300"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "PPPMP-3", "PPPMP-20" ]
+  },
+  "source" : "f351e56f77c569ef.json",
+  "parameterValues" : [ "Paypal response does not have order id", "13300" ]
+}

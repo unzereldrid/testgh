@@ -1,0 +1,212 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MongoDBContext</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.unzer.payment.paypalpmp.infrastructure.context</a>
+</div>
+
+<h1>Coverage Summary for Class: MongoDBContext (com.unzer.payment.paypalpmp.infrastructure.context)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">MongoDBContext</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    46.2%
+  </span>
+  <span class="absValue">
+    (6/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    44.2%
+  </span>
+  <span class="absValue">
+    (34/77)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MongoDBContext$logger$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (4/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    42.9%
+  </span>
+  <span class="absValue">
+    (6/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    44.2%
+  </span>
+  <span class="absValue">
+    (34/77)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.unzer.payment.paypalpmp.infrastructure.context
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.amazonaws.auth.AWSSessionCredentials
+<i class="no-highlight">4</i>&nbsp;import com.amazonaws.auth.DefaultAWSCredentialsProviderChain
+<i class="no-highlight">5</i>&nbsp;import com.mongodb.AuthenticationMechanism
+<i class="no-highlight">6</i>&nbsp;import com.mongodb.AwsCredential
+<i class="no-highlight">7</i>&nbsp;import com.mongodb.MongoCredential
+<i class="no-highlight">8</i>&nbsp;import mu.KotlinLogging
+<i class="no-highlight">9</i>&nbsp;import org.springframework.boot.autoconfigure.mongo.MongoClientSettingsBuilderCustomizer
+<i class="no-highlight">10</i>&nbsp;import org.springframework.boot.autoconfigure.mongo.MongoProperties
+<i class="no-highlight">11</i>&nbsp;import org.springframework.context.annotation.Bean
+<i class="no-highlight">12</i>&nbsp;import org.springframework.context.annotation.Configuration
+<i class="no-highlight">13</i>&nbsp;import java.util.function.Supplier
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;
+<b class="fc"><i class="no-highlight">16</i>&nbsp;@Configuration</b>
+<i class="no-highlight">17</i>&nbsp;class MongoDBContext {
+<i class="no-highlight">18</i>&nbsp;
+<b class="pc"><i class="no-highlight">19</i>&nbsp;    private val logger = KotlinLogging.logger {}</b>
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Bean
+<i class="no-highlight">22</i>&nbsp;    fun authenticationCustomizer(properties: MongoProperties): MongoClientSettingsBuilderCustomizer {
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        return MongoClientSettingsBuilderCustomizer { builder -&gt;</b>
+<b class="pc"><i class="no-highlight">24</i>&nbsp;            if (properties.authenticatesWithAws()) {</b>
+<b class="nc"><i class="no-highlight">25</i>&nbsp;                logger.info(&quot;Mongo configured with MONGODB-AWS authentication mechanism&quot;)</b>
+<b class="nc"><i class="no-highlight">26</i>&nbsp;                val awsCredential = MongoCredential.createAwsCredential(null, null)</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;                    .withMechanismProperty(MongoCredential.AWS_CREDENTIAL_PROVIDER_KEY, awsCredentialsSupplier)</b>
+<b class="nc"><i class="no-highlight">28</i>&nbsp;                builder.credential(awsCredential)</b>
+<i class="no-highlight">29</i>&nbsp;            }
+<i class="no-highlight">30</i>&nbsp;        }
+<i class="no-highlight">31</i>&nbsp;    }
+<i class="no-highlight">32</i>&nbsp;
+<b class="fc"><i class="no-highlight">33</i>&nbsp;    private val awsCredentialsSupplier = Supplier&lt;AwsCredential&gt; {</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        val credentials = DefaultAWSCredentialsProviderChain().credentials as AWSSessionCredentials</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        logger.debug(&quot;AWS role assumed&quot;)</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;        AwsCredential(credentials.awsAccessKeyId, credentials.awsSecretKey, credentials.sessionToken)</b>
+<i class="no-highlight">37</i>&nbsp;    }
+<i class="no-highlight">38</i>&nbsp;
+<b class="fc"><i class="no-highlight">39</i>&nbsp;    private fun MongoProperties.authenticatesWithAws() = uri.contains(&quot;authMechanism=${AuthenticationMechanism.MONGODB_AWS}&quot;)</b>
+<i class="no-highlight">40</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-09 08:57</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+    "intent": "CAPTURE",
+    "purchase_units": [
+        {
+            "reference_id": null,
+            "amount": {
+                "currency_code": "EUR",
+                "value": "10.10",
+                "breakdown": null
+            },
+            "payee": {
+                "merchant_id": "LEMYFFUCXDB5N"
+            },
+            "description": "caaf3d9c.c18e.4895.8683.59fff3e6d63b some merchant ",
+            "soft_descriptor": "caaf3d9c.c18e.4895.868",
+            "custom_id": "43a8a2e7-ff91-4714-9fd0-0750932d2e58",
+            "invoice_id": null,
+            "items": null,
+            "shipping": null
+        }
+    ],
+    "payer": null,
+    "application_context": {
+        "brand_name": "some brand",
+        "locale": "de-DE",
+        "landing_page": "BILLING",
+        "shipping_preference": "NO_SHIPPING",
+        "payment_method": {
+            "payer_selected": "PAYPAL",
+            "payee_preferred": "IMMEDIATE_PAYMENT_REQUIRED"
+        },
+        "return_url": "http://localhost:9000/return/f14caf42-79c7-4d25-8312-ce1e0bf0f697?X-Trace-Id=889419ba-b26f-4354-b2ae-30e28c1fbd88&result=SUCCESS",
+        "cancel_url": "http://localhost:9000/return/f14caf42-79c7-4d25-8312-ce1e0bf0f697?X-Trace-Id=889419ba-b26f-4354-b2ae-30e28c1fbd88&result=CANCEL",
+        "user_action": "PAY_NOW"
+    }
+}

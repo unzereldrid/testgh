@@ -1,0 +1,123 @@
+{
+  "uid" : "71e3b9be41ebb85e",
+  "name" : "Creation of order fails on paypal side(String, long) Request to paypal times out",
+  "fullName" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest.Creation of order fails on paypal side",
+  "historyId" : "d8a27f33ad2698cde75bcc5760bac61f",
+  "time" : {
+    "start" : 1646816468411,
+    "stop" : 1646816473811,
+    "duration" : 5400
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "fde5475f90ba11b6",
+      "name" : "Request",
+      "source" : "fde5475f90ba11b6.html",
+      "type" : "text/html",
+      "size" : 1595
+    }, {
+      "uid" : "fc3af32650ca9158",
+      "name" : "HTTP/1.1 500 Internal Server Error",
+      "source" : "fc3af32650ca9158.html",
+      "type" : "text/html",
+      "size" : 1630
+    }, {
+      "uid" : "54f67aef40b35d76",
+      "name" : "Request",
+      "source" : "54f67aef40b35d76.html",
+      "type" : "text/html",
+      "size" : 567
+    }, {
+      "uid" : "8ef34d4d9f9c0229",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "8ef34d4d9f9c0229.html",
+      "type" : "text/html",
+      "size" : 1474
+    }, {
+      "uid" : "c098344acc78d042",
+      "name" : "Request",
+      "source" : "c098344acc78d042.html",
+      "type" : "text/html",
+      "size" : 667
+    }, {
+      "uid" : "b8a06f40ca1e817d",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "b8a06f40ca1e817d.html",
+      "type" : "text/html",
+      "size" : 1630
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 6,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "PPPMP-3"
+  }, {
+    "name" : "tag",
+    "value" : "PPPMP-20"
+  }, {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.unzer.payment.paypalpmp.testing.tests.PurchaseTest]/[test-template:Creation of order fails on paypal side(java.lang.String, long)]/[test-template-invocation:#5]"
+  }, {
+    "name" : "host",
+    "value" : "fv-az224-626"
+  }, {
+    "name" : "thread",
+    "value" : "5524@fv-az224-626.Test worker(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "Creation of order fails on paypal side"
+  }, {
+    "name" : "suite",
+    "value" : "com.unzer.payment.paypalpmp.testing.tests.PurchaseTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "Request to paypal times out"
+  }, {
+    "name" : "arg1",
+    "value" : "13408"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "PPPMP-3", "PPPMP-20" ]
+  },
+  "source" : "71e3b9be41ebb85e.json",
+  "parameterValues" : [ "Request to paypal times out", "13408" ]
+}
